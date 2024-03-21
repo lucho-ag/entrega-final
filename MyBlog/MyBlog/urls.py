@@ -16,8 +16,14 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.http import HttpResponse
+
+def mi_func(self):
+    return HttpResponse("Empieza la locura")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", mi_func),
+    path("bookings/", include("Bookings.urls"))
 ]
